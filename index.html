@@ -129,7 +129,7 @@
     try {
       // Send the data to the webhook
       const response = await fetch(webhookURL, {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         },
