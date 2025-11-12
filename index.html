@@ -58,6 +58,7 @@
           </label>
           <button class="btn btn-primary" type="submit">Request Ride</button>
         </form>
+        <p id="message" style="display:none; color:green; font-weight:bold;">✅ Thank you! Your ride has been requested.</p>
       </div>
 
       <div>
@@ -115,6 +116,30 @@
       document.getElementById('mainNav2').classList.toggle('open');
       document.getElementById('hamburger2').classList.toggle('active');
     });
+
+
+  const form = document.getElementById("rideForm");
+const msg = document.getElementById("message");
+const WEBHOOK_URL = "https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981"; // <-- put your real webhook URL
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault(); // stop page reload
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: "POST",
+      body: new URLSearchParams(data), // sends as form-data (no CORS issue)
+    });
+
+    form.reset();
+    msg.style.display = "block"; // show success message
+  } catch (err) {
+    alert("Something went wrong! Check console.");
+    console.error(err);
+  }
+});
   </script>
 </body>
 </html>
