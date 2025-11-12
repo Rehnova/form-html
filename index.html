@@ -108,10 +108,7 @@
 
   <script>
     document.getElementById('year2').textContent = new Date().getFullYear();
-    document.getElementById('rideForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      alert('Ride requested! (This demo form does not send data.)');
-    });
+  
     document.getElementById('hamburger2').addEventListener('click', ()=>{
       document.getElementById('mainNav2').classList.toggle('open');
       document.getElementById('hamburger2').classList.toggle('active');
