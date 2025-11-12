@@ -115,26 +115,33 @@
     });
 
 
-  const form = document.getElementById("rideForm");
-const msg = document.getElementById("message");
-const WEBHOOK_URL = "https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981"; // <-- put your real webhook URL
+ const form = document.getElementById('rideForm');
+const thankMsg = document.getElementById('thankMessage');
+const WEBHOOK_URL = 'https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981'; // 🔥 Replace this
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault(); // stop page reload
+
   const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
 
   try {
-    await fetch(WEBHOOK_URL, {
-      method: "GET",
-      body: new URLSearchParams(data), // sends as form-data (no CORS issue)
+    // Send as form data, works with n8n webhook
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'GET',
+      body: formData
     });
 
-    form.reset();
-    msg.style.display = "block"; // show success message
+    // Show thank you message and hide form
+    if (response.ok || response.status === 200 || response.status === 204) {
+      form.style.display = 'none';
+      thankMsg.style.display = 'block';
+    } else {
+      alert('Something went wrong. Check your webhook or network.');
+    }
+
   } catch (err) {
-    alert("Something went wrong! Check console.");
-    console.error(err);
+    console.error('Error sending data:', err);
+    alert('Error sending data. Check console.');
   }
 });
   </script>
