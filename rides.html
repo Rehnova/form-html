@@ -115,6 +115,40 @@
       document.getElementById('mainNav2').classList.toggle('open');
       document.getElementById('hamburger2').classList.toggle('active');
     });
+
+
+    
+      const form = document.getElementById('rideForm');
+  const webhookURL = 'https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981'; // Replace with your webhook URL
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Collect form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // Send the data to the webhook
+      const response = await fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        alert('Ride requested successfully!');
+        form.reset();
+      } else {
+        alert('Failed to send data. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong. Check console for details.');
+    }
+  });
   </script>
 </body>
 </html>
