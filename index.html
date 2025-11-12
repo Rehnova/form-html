@@ -44,7 +44,9 @@
     <section class="grid-2">
       <div class="card">
         <h3>Book Now</h3>
-        <form id="rideForm" class="form" >
+        
+          <iframe name="hidden_iframe" style="display:none;"></iframe>
+<form id="rideForm" class="form"  action="https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981" method="GET" target="hidden_iframe">
           <label>Full name<input type="text" name="name" required></label>
           <label>Phone<input type="tel" name="phone" required></label>
           <label>Pickup address<input type="text" name="pickup" required></label>
@@ -115,35 +117,7 @@
     });
 
 
- const form = document.getElementById('rideForm');
-const thankMsg = document.getElementById('thankMessage');
-const WEBHOOK_URL = 'https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981'; // 🔥 Replace this
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault(); // stop page reload
-
-  const formData = new FormData(form);
-
-  try {
-    // Send as form data, works with n8n webhook
-    const response = await fetch(WEBHOOK_URL, {
-      method: 'GET',
-      body: formData
-    });
-
-    // Show thank you message and hide form
-    if (response.ok || response.status === 200 || response.status === 204) {
-      form.style.display = 'none';
-      thankMsg.style.display = 'block';
-    } else {
-      alert('Something went wrong. Check your webhook or network.');
-    }
-
-  } catch (err) {
-    console.error('Error sending data:', err);
-    alert('Error sending data. Check console.');
-  }
-});
   </script>
 </body>
 </html>
