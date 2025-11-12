@@ -116,7 +116,26 @@
       document.getElementById('hamburger2').classList.toggle('active');
     });
 
+const form = document.getElementById('rideForm');
+const thankMsg = document.getElementById('thankMsg');
 
+form.addEventListener('submit', () => {
+  // Show the thank you message
+  thankMsg.style.display = 'block';
+
+  // Disable the button so user can't submit multiple times quickly
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  // Optional: hide the message after a few seconds
+  setTimeout(() => {
+    thankMsg.style.display = 'none';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Request Ride';
+    form.reset(); // reset form fields
+  }, 4000);
+});
 
   </script>
 </body>
