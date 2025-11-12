@@ -5,40 +5,40 @@
   <title>Webhook Form</title>
 </head>
 <body>
-  <form id="myForm">
+  <form id="myForm" action="https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981" method="GET">
     <label>Name: <input type="text" name="name" required></label><br>
     <label>Phone: <input type="tel" name="phone" required></label><br>
     <button type="submit">Submit</button>
   </form>
 
   <script>
-    const form = document.getElementById("myForm");
-    const WEBHOOK_URL = "https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981"; // 🔥 replace with your actual webhook URL
+    // const form = document.getElementById("myForm");
+    // const WEBHOOK_URL = "https://qbs123123.app.n8n.cloud/webhook/b46ffb42-b535-4b77-8460-ea394187f981"; // 🔥 replace with your actual webhook URL
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    // form.addEventListener("submit", async (e) => {
+    //   e.preventDefault();
 
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
+    //   const formData = new FormData(form);
+    //   const data = Object.fromEntries(formData.entries());
 
-      try {
-        const res = await fetch(WEBHOOK_URL, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
+    //   try {
+    //     const res = await fetch(WEBHOOK_URL, {
+    //       method: "GET",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify(data)
+    //     });
 
-        if (res.ok) {
-          alert("✅ Data sent successfully!");
-          form.reset();
-        } else {
-          alert("❌ Failed to send data.");
-        }
-      } catch (err) {
-        alert("⚠️ Error sending data. Check console.");
-        console.error(err);
-      }
-    });
+    //     if (res.ok) {
+    //       alert("✅ Data sent successfully!");
+    //       form.reset();
+    //     } else {
+    //       alert("❌ Failed to send data.");
+    //     }
+    //   } catch (err) {
+    //     alert("⚠️ Error sending data. Check console.");
+    //     console.error(err);
+    //   }
+    // });
   </script>
 </body>
 </html>
