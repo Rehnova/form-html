@@ -45,7 +45,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         // =========================
         // 2️⃣ Send to Apps Script
         // =========================
-        const response = await fetch("https://script.google.com/macros/s/AKfycbyG6UHMBYw8kQs2RvS85_yChurmH1ZXKEkq_t6iNBB-UFnf2uENukMPsI4ps4bb-bRc/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxQ8M0lPtpkdTHdv1MCoVhVPaDORf_3qy-V967vV-rt5S9DuujUnDhK0sNL-21tfrI6/exec", {
             method: "POST",
             body: JSON.stringify({
                 name: document.getElementById("name").value.trim(),
