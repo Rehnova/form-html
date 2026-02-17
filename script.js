@@ -47,9 +47,6 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         // =========================
         const response = await fetch("https://script.google.com/macros/s/AKfycbyG6UHMBYw8kQs2RvS85_yChurmH1ZXKEkq_t6iNBB-UFnf2uENukMPsI4ps4bb-bRc/exec", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
             body: JSON.stringify({
                 name: document.getElementById("name").value.trim(),
                 email: document.getElementById("email").value.trim(),
